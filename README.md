@@ -17,10 +17,12 @@ Video frame interpolation is one of the most challenging tasks in video processi
 
 ![Architecture](/images/Architecture.PNG)
 The network architecture.
+
 ![VisualComp](/images/visual_comparison.PNG)
-The network architecture.
+Visual Comparisons.
+
 ![OffsetVis](/images/offset_visualization.PNG)
-The network architecture.
+Offset Visualizations.
 
 ## Environment
 - Ubuntu 16.04.4
