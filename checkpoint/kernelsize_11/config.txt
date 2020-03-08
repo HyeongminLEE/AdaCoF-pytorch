@@ -1,0 +1,66 @@
+2019-09-20-09:55:47
+
+model: adc
+gpu_id: 1
+train: ./db
+out_dir: vimeo_adc_ks9
+load: None
+test_input: ./Interpolation_testset/input
+gt: ./Interpolation_testset/gt
+epochs: 50
+batch_size: 4
+loss: 1*Charb+0.01*g_Spatial+0.005*g_Occlusion
+patch_size: 256
+lr: 0.001
+lr_decay: 20
+decay_type: step
+gamma: 0.5
+optimizer: ADAMax
+weight_decay: 0
+kernel_size: 9
+flow_num: 30
+
+2019-09-23-16:29:39
+
+model: adc
+gpu_id: 1
+train: ./db
+out_dir: vimeo_adc_ks9
+load: None
+test_input: ./Interpolation_testset/input
+gt: ./Interpolation_testset/gt
+epochs: 50
+batch_size: 4
+loss: 1*Charb+0.01*g_Spatial+0.005*g_Occlusion
+patch_size: 256
+lr: 0.001
+lr_decay: 20
+decay_type: step
+gamma: 0.5
+optimizer: ADAMax
+weight_decay: 0
+kernel_size: 13
+flow_num: 30
+
+2019-09-23-16:30:39
+
+model: adc
+gpu_id: 1
+train: ./db
+out_dir: vimeo_adc_ks9
+load: None
+test_input: ./Interpolation_testset/input
+gt: ./Interpolation_testset/gt
+epochs: 50
+batch_size: 4
+loss: 1*Charb+0.01*g_Spatial+0.005*g_Occlusion
+patch_size: 256
+lr: 0.001
+lr_decay: 20
+decay_type: step
+gamma: 0.5
+optimizer: ADAMax
+weight_decay: 0
+kernel_size: 11
+flow_num: 30
+

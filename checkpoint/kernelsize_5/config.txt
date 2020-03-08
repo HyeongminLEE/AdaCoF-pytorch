@@ -1,0 +1,22 @@
+2019-09-17-16:45:11
+
+model: adc
+gpu_id: 0
+train: ./db
+out_dir: vimeo_adc_ks5
+load: None
+test_input: ./Interpolation_testset/input
+gt: ./Interpolation_testset/gt
+epochs: 50
+batch_size: 4
+loss: 1*Charb+0.01*g_Spatial+0.005*g_Occlusion
+patch_size: 256
+lr: 0.001
+lr_decay: 20
+decay_type: step
+gamma: 0.5
+optimizer: ADAMax
+weight_decay: 0
+kernel_size: 5
+flow_num: 30
+
