@@ -25,6 +25,7 @@ Visual Comparisons.
 Offset Visualizations.
 
 ## Environment
+- GPU: GTX1080Ti
 - Ubuntu 16.04.4
 - CUDA 10.0
 - python 3.6
@@ -75,7 +76,7 @@ If you find the code helpful in your resarch or work, please cite the following 
 @inproceedings{lee2020adacof,
     title={AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation},
     author={Hyeongmin Lee, Taeoh Kim, Tae-young Chung, Daehyun Pak, Yuseok Ban, and Sangyoun Lee},
-    booktitle={CVPR},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     year={2020}
 }
 ```
