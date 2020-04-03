@@ -4,6 +4,8 @@ This repository is for AdaCoF introduced in the following paper
 
 [Hyeongmin Lee](https://hyeongminlee.github.io/), [Taeoh Kim](https://taeoh-kim.github.io/), Tae-young Chung, Daehyun Pak, Yuseok Ban, and Sangyoun Lee, "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation", CVPR 2020, [[arXiv](https://arxiv.org/abs/1907.10244)], [[Video](https://www.youtube.com/watch?v=Z3q0YrBsNJc)]
 
+<a href="https://arxiv.org/abs/1907.10244v3" rel="Paper"><img src="http://www.arxiv-sanity.com/static/thumbs/1907.10244v3.pdf.jpg" alt="Paper" width="100%"></a>
+
 ## Contents
 1. [Introduction](#introduction)
 2. [Environment](#environment)
