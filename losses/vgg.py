@@ -7,7 +7,7 @@ import torchvision
 class VGG(nn.Module):
     def __init__(self):
         super(VGG, self).__init__()
-        vgg16 = torchvision.models.vgg16()
+        vgg16 = torchvision.models.vgg16(pretrained=True)
         self.vgg16_conv_4_3 = torch.nn.Sequential(*list(vgg16.children())[0][:22])
         for param in self.vgg16_conv_4_3.parameters():
             param.requires_grad = False
