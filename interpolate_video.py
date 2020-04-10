@@ -7,7 +7,7 @@ import os
 from torchvision.utils import save_image as imwrite
 from torch.autograd import Variable
 
-parser = argparse.ArgumentParser(description='Frame Interpolation Evaluation')
+parser = argparse.ArgumentParser(description='Video Interpolation')
 
 parser.add_argument('--gpu_id', type=int, default=0)
 parser.add_argument('--model', type=str, default='adacof')
