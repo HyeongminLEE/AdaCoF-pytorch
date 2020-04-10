@@ -68,7 +68,7 @@ For more informaiton about Vimeo90k, please refer to [TOFlow](https://github.com
 4. Run evaluation.py with following command.
 
     ```bash
-    python evaluation.py --checkpoint [checkpoint_dir] --out_dir [output_dir]
+    python evaluation.py --out_dir [output_dir] --checkpoint [checkpoint_dir] --config [configuration_dir]
     ```
 5. Then you will have the output folder (out_dir) that contains the results on the test sets 'middlebury_eval', 'middlebury_others', 'davis', 'ucf101'.
 
@@ -78,9 +78,17 @@ For more informaiton about Vimeo90k, please refer to [TOFlow](https://github.com
 3. Run interpolate_video.py with following command.
 
     ```bash
-    python interpolate_video.py --input_video [input_video_frames_dir] --output_video [output_video_frames_dir]
+    python interpolate_video.py --input_video [input_video_frames_dir] --output_video [output_video_frames_dir] --checkpoint [checkpoint_dir] --config [configuration_dir]
     ```
-5. Then you will have the output folder (output_video_frames_dir) that contains the output video frames.
+4. Then you will have the output folder (output_video_frames_dir) that contains the output video frames.
+
+### Two-frame interpolation
+1. To interpolate a frame between arbitrary two frames you have, run interpolate_video.py with following command.
+
+    ```bash
+    python interpolate_video.py --first_frame [first_frame] --second_frame [second_frame] --output_frame [output_frame] --checkpoint [checkpoint_dir] --config [configuration_dir]
+    ```
+2. Then you will have the interpolated output frame.
 
 ## Citation
 If you find the code helpful in your resarch or work, please cite the following paper.
