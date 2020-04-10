@@ -58,8 +58,8 @@ For more informaiton about Vimeo90k, please refer to [TOFlow](https://github.com
 3. Then you will have the output folder (out_dir) that contains the checkpoints, result images and the configuration file of the training.
 
 ## Test
-### Quick start
-1. For evaluation, you need the checkpoint file and configuration (optional).
+### Evaluation
+1. For evaluation, you need the checkpoint file and configuration (configuration is optional).
 
 2. You can use your own trained checkpoint, or we provide our pre-trined model in './checkpoint'.
 
@@ -71,6 +71,16 @@ For more informaiton about Vimeo90k, please refer to [TOFlow](https://github.com
     python evaluation.py --checkpoint [checkpoint_dir] --out_dir [output_dir]
     ```
 5. Then you will have the output folder (out_dir) that contains the results on the test sets 'middlebury_eval', 'middlebury_others', 'davis', 'ucf101'.
+
+### Video Interpolation
+1. To interpolate an arbitrary video you have, create a directory which contains the frames of the video like 'sample_video' directory.
+2. The starting frame index and zero-padding of indexing can be changed with '--index_from' and '--zpad'.
+3. Run interpolate_video.py with following command.
+
+    ```bash
+    python interpolate_video.py --input_video [input_video_frames_dir] --output_video [output_video_frames_dir]
+    ```
+5. Then you will have the output folder (output_video_frames_dir) that contains the output video frames.
 
 ## Citation
 If you find the code helpful in your resarch or work, please cite the following paper.
