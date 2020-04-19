@@ -86,7 +86,7 @@ For more informaiton about Vimeo90k, please refer to [TOFlow](https://github.com
 1. To interpolate a frame between arbitrary two frames you have, run interpolate_video.py with following command.
 
     ```bash
-    python interpolate_video.py --first_frame [first_frame] --second_frame [second_frame] --output_frame [output_frame] --checkpoint [checkpoint_dir] --config [configuration_dir]
+    python interpolate_twoframe.py --first_frame [first_frame] --second_frame [second_frame] --output_frame [output_frame] --checkpoint [checkpoint_dir] --config [configuration_dir]
     ```
 2. Then you will have the interpolated output frame.
 
