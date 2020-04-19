@@ -1,12 +1,12 @@
 import torch
-import cupy_module.defconv as defconv
+import cupy_module.adacof as adacof
 import sys
 from torch.nn import functional as F
 from utility import CharbonnierFunc, moduleNormalize
 
 
 def make_model(args):
-    return AdaCoF(args).cuda()
+    return AdaCoFNet(args).cuda()
 
 
 class KernelEstimation(torch.nn.Module):
@@ -153,9 +153,9 @@ class KernelEstimation(torch.nn.Module):
         return Weight1, Alpha1, Beta1, Weight2, Alpha2, Beta2, Occlusion
 
 
-class AdaCoF(torch.nn.Module):
+class AdaCoFNet(torch.nn.Module):
     def __init__(self, args):
-        super(AdaCoF, self).__init__()
+        super(AdaCoFNet, self).__init__()
         self.args = args
         self.kernel_size = args.kernel_size
         self.kernel_pad = int(((args.kernel_size - 1) * args.dilation) / 2.0)
@@ -165,7 +165,7 @@ class AdaCoF(torch.nn.Module):
 
         self.modulePad = torch.nn.ReplicationPad2d([self.kernel_pad, self.kernel_pad, self.kernel_pad, self.kernel_pad])
 
-        self.moduleDefconv = defconv.FunctionDefconv.apply
+        self.moduleAdaCoF = adacof.FunctionAdaCoF.apply
 
     def forward(self, frame0, frame2):
         h0 = int(list(frame0.size())[2])
@@ -190,10 +190,10 @@ class AdaCoF(torch.nn.Module):
             w_padded = True
         Weight1, Alpha1, Beta1, Weight2, Alpha2, Beta2, Occlusion = self.get_kernel(moduleNormalize(frame0), moduleNormalize(frame2))
 
-        tensorDefconv1 = self.moduleDefconv(self.modulePad(frame0), Weight1, Alpha1, Beta1, self.dilation)
-        tensorDefconv2 = self.moduleDefconv(self.modulePad(frame2), Weight2, Alpha2, Beta2, self.dilation)
+        tensorAdaCoF1 = self.moduleAdaCoF(self.modulePad(frame0), Weight1, Alpha1, Beta1, self.dilation)
+        tensorAdaCoF2 = self.moduleAdaCoF(self.modulePad(frame2), Weight2, Alpha2, Beta2, self.dilation)
 
-        frame1 = Occlusion * tensorDefconv1 + (1 - Occlusion) * tensorDefconv2
+        frame1 = Occlusion * tensorAdaCoF1 + (1 - Occlusion) * tensorAdaCoF2
         if h_padded:
             frame1 = frame1[:, :, 0:h0, :]
         if w_padded:

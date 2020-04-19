@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description='AdaCoF-Pytorch')
 
 # parameters
 # Model Selection
-parser.add_argument('--model', type=str, default='adacof')
+parser.add_argument('--model', type=str, default='adacofnet')
 
 # Hardware Setting
 parser.add_argument('--gpu_id', type=int, default=0)

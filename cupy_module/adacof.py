@@ -3,8 +3,8 @@ import torch
 import re
 import math
 
-kernel_Defconv_updateOutput = '''
-    extern "C" __global__ void kernel_Defconv_updateOutput(
+kernel_AdaCoF_updateOutput = '''
+    extern "C" __global__ void kernel_AdaCoF_updateOutput(
         const int n,
         const float* input,
         const float* weight,
@@ -64,8 +64,8 @@ kernel_Defconv_updateOutput = '''
     } }
 '''
 
-kernel_DeformableConvolution_updateGradWeight = '''
-    extern "C" __global__ void kernel_DeformableConvolution_updateGradWeight(
+kernel_AdaCoF_updateGradWeight = '''
+    extern "C" __global__ void kernel_AdaCoF_updateGradWeight(
         const int n,
         const float* gradLoss,
         const float* input,
@@ -127,8 +127,8 @@ kernel_DeformableConvolution_updateGradWeight = '''
     } }
 '''
 
-kernel_DeformableConvolution_updateGradAlpha = '''
-    extern "C" __global__ void kernel_DeformableConvolution_updateGradAlpha(
+kernel_AdaCoF_updateGradAlpha = '''
+    extern "C" __global__ void kernel_AdaCoF_updateGradAlpha(
         const int n,
         const float* gradLoss,
         const float* input,
@@ -192,8 +192,8 @@ kernel_DeformableConvolution_updateGradAlpha = '''
     } }
 '''
 
-kernel_DeformableConvolution_updateGradBeta = '''
-    extern "C" __global__ void kernel_DeformableConvolution_updateGradBeta(
+kernel_AdaCoF_updateGradBeta = '''
+    extern "C" __global__ void kernel_AdaCoF_updateGradBeta(
         const int n,
         const float* gradLoss,
         const float* input,
@@ -308,7 +308,7 @@ def cupy_launch(strFunction, strKernel):
 
 # end
 
-class FunctionDefconv(torch.autograd.Function):
+class FunctionAdaCoF(torch.autograd.Function):
     # end
     @staticmethod
     def forward(ctx, input, weight, offset_i, offset_j, dilation):
@@ -340,7 +340,7 @@ class FunctionDefconv(torch.autograd.Function):
             # end
 
             n = output.nelement()
-            cupy_launch('kernel_Defconv_updateOutput', cupy_kernel('kernel_Defconv_updateOutput', intFilterSize, dilation, {
+            cupy_launch('kernel_AdaCoF_updateOutput', cupy_kernel('kernel_AdaCoF_updateOutput', intFilterSize, dilation, {
                 'input': input,
                 'weight': weight,
                 'offset_i': offset_i,
@@ -392,7 +392,7 @@ class FunctionDefconv(torch.autograd.Function):
 
             # weight grad
             n_w = gradWeight.nelement()
-            cupy_launch('kernel_DeformableConvolution_updateGradWeight', cupy_kernel('kernel_DeformableConvolution_updateGradWeight', intFilterSize, dilation, {
+            cupy_launch('kernel_AdaCoF_updateGradWeight', cupy_kernel('kernel_AdaCoF_updateGradWeight', intFilterSize, dilation, {
                 'gradLoss': gradOutput,
                 'input': input,
                 'offset_i': offset_i,
@@ -407,7 +407,7 @@ class FunctionDefconv(torch.autograd.Function):
 
             # alpha grad
             n_i = gradOffset_i.nelement()
-            cupy_launch('kernel_DeformableConvolution_updateGradAlpha', cupy_kernel('kernel_DeformableConvolution_updateGradAlpha', intFilterSize, dilation, {
+            cupy_launch('kernel_AdaCoF_updateGradAlpha', cupy_kernel('kernel_AdaCoF_updateGradAlpha', intFilterSize, dilation, {
                 'gradLoss': gradOutput,
                 'input': input,
                 'weight': weight,
@@ -423,7 +423,7 @@ class FunctionDefconv(torch.autograd.Function):
 
             # beta grad
             n_j = gradOffset_j.nelement()
-            cupy_launch('kernel_DeformableConvolution_updateGradBeta', cupy_kernel('kernel_DeformableConvolution_updateGradBeta', intFilterSize, dilation, {
+            cupy_launch('kernel_AdaCoF_updateGradBeta', cupy_kernel('kernel_AdaCoF_updateGradBeta', intFilterSize, dilation, {
                 'gradLoss': gradOutput,
                 'input': input,
                 'weight': weight,

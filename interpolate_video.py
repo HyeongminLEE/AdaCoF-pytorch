@@ -10,7 +10,7 @@ from torch.autograd import Variable
 parser = argparse.ArgumentParser(description='Video Interpolation')
 
 parser.add_argument('--gpu_id', type=int, default=0)
-parser.add_argument('--model', type=str, default='adacof')
+parser.add_argument('--model', type=str, default='adacofnet')
 parser.add_argument('--checkpoint', type=str, default='./checkpoint/kernelsize_5/ckpt.pth')
 parser.add_argument('--config', type=str, default='./checkpoint/kernelsize_5/config.txt')
 

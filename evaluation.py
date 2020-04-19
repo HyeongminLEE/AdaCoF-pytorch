@@ -7,7 +7,7 @@ import TestModule
 parser = argparse.ArgumentParser(description='Frame Interpolation Evaluation')
 
 parser.add_argument('--gpu_id', type=int, default=0)
-parser.add_argument('--model', type=str, default='adacof')
+parser.add_argument('--model', type=str, default='adacofnet')
 parser.add_argument('--checkpoint', type=str, default='./checkpoint/kernelsize_5/ckpt.pth')
 parser.add_argument('--config', type=str, default='./checkpoint/kernelsize_5/config.txt')
 parser.add_argument('--out_dir', type=str, default='./output_adacof_test')
