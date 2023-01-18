@@ -101,6 +101,6 @@ If you find the code helpful in your resarch or work, please cite the following 
 }
 ```
 ## Acknowledgements
-This code is based on [yulunzhang/RCAN](https://github.com/yulunzhang/RCAN)
+This code is based on [yulunzhang/RCAN](https://github.com/yulunzhang/RCAN)  
 The cupy part is based on [sniklaus/sepconv-slomo](https://github.com/sniklaus/sepconv-slomo)
 
